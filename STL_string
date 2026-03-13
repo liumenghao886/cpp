@@ -1,0 +1,52 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+	string s="hello world!";
+	cout<<s<<endl; 
+	
+	 //1.长度
+	 //①size() 
+	 int num1=s.size();
+	 //② length() 
+	 int num2=s.length();
+	 cout<<num1<<endl;
+	 cout<<num2<<endl;
+	 
+	 //2.访问字符
+	 //①下标访问，不检查越界 
+	 cout<<s[1]<<endl;
+	 cout<<s[1000]<<endl;
+	 //②越界抛出日常 
+	 cout<<s.at(1)<<endl; 
+	 //cout<<s.at(1000)<<endl;
+	 
+	 //3.拼接
+	 string n="i love you";
+	 //① 
+	 string m=s+n;
+	 cout<<m<<endl;
+	 //②
+	 string m2=s+"i love donk";
+	 cout<<m2<<endl; 
+	  
+	  //4.插入，删除
+	  int pos=10;
+	  //① 
+	  s.insert(pos,"i love magxii"); 
+	  cout<<s<<endl;
+	  //② 
+	  s.erase(pos,2);
+	  cout<<s<<endl; 
+	  
+	  //5.查找
+	  int ret=s.find("o");//返回值为下标 
+	  cout<<ret<<endl; 
+	  
+	  //6.截取子串   s.substr(pos,len)
+	  string n3=s.substr(1,4);
+	  cout<<n3<<endl;
+	   
+	return 0; 
+}
