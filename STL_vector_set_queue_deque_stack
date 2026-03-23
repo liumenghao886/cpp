@@ -1,0 +1,177 @@
+#include<iostream>
+#include<vector>
+#include<list>
+#include<queue>
+#include<deque>
+#include<stack>
+#include<set>
+using namespace std;
+void xunhuan(vector<int> &v)
+{
+		for(int i=0;i<v.size();i++)
+	{
+		cout<<v[i]<<" ";
+	}
+}
+void test01(vector<int> &v)
+{
+	
+	//增 
+	//尾增 
+	v.push_back(10);
+	v.push_back(20);
+	v.push_back(30);
+	v.push_back(40);
+	//头增
+	v.insert(v.begin(),9);
+	v.insert(v.begin(),8); 
+	//删
+	//尾删
+	v.pop_back();
+	//头删
+	v.erase(v.begin()); 
+	//查
+	cout<<v[0]<<endl;
+	cout<<v.at(0)<<endl; 
+	cout<<v.back()<<endl;
+	cout<<v.front()<<endl;
+	//大小，容量
+	 cout<<"有多少元素："<<v.size()<<endl; 
+	 cout<<"容量为："<<v.capacity()<<endl;
+	 v.resize(1000);//改大小 
+	 cout<<"有多少元素："<<v.size()<<endl;
+}
+void test02(list<int> &l)
+{
+	
+	l.push_back(5);
+	l.push_back(6);
+	l.push_back(7);
+	l.push_back(8);
+	l.push_front(4);
+	l.push_front(3);
+	l.push_front(2);
+	l.push_front(1);
+	l.insert(l.begin(),0);
+	list<int>::iterator it=l.begin();
+	for(;it!=l.end();it++)
+	{
+		cout<<*it<<" ";
+	}
+	cout<<endl;
+	l.pop_back();
+	l.pop_front();
+	it=l.begin();//删除首元素后重新获取初始迭代器 
+	for(;it!=l.end();it++)
+	{
+		cout<<*it<<" ";
+	}
+	cout<<endl;
+	//list不能随机访问，只能访问首尾
+	cout<<"首："<<l.front()<<"尾："<<l.back()<<endl; 
+	//l.clear();//删除所有元素 
+	//it=l.begin();//删除首元素后重新获取初始迭代器 
+	//for(;it!=l.end();it++)
+	//{
+	//	cout<<*it<<" ";
+	//}
+	l.remove(5);//删除所有值为x的元素 
+		it=l.begin();//删除首元素后重新获取初始迭代器 
+	for(;it!=l.end();it++)
+	{
+		cout<<*it<<" ";
+	}
+}
+void test03(queue<int> &q)
+{
+	q.push(1);
+	q.push(2);
+	q.push(3);
+	q.push(4);
+	q.pop(); 
+	cout<<q.front()<<endl; 
+	cout<<q.back()<<endl;
+}
+void test04(deque<int> &dq)
+{
+	dq.push_back(1);
+	dq.push_back(2);
+	dq.push_back(3);
+	dq.push_front(4);
+	dq.push_front(5);
+	dq.push_front(6);
+	cout<<dq.front()<<endl;
+	cout<<dq.back()<<endl;
+	deque<int>::iterator it=dq.begin();
+	for(;it!=dq.end();it++)
+	{
+		cout<<*it<<endl;
+	}
+}
+void test05(stack<int> &s)
+{
+	s.push(10);
+	s.push(20);
+	s.push(30);
+	s.push(40);
+	//取栈，查看，不删除 
+	cout<<s.top()<<endl;
+	//出栈，删除栈顶
+	s.pop();
+	cout<<s.top()<<endl;
+}
+void test05(set<int> &st)
+{
+	st.insert(4);
+	st.insert(2);
+	st.insert(5);
+	st.insert(1);
+	st.insert(9);
+	st.insert(8);
+	st.insert(7);
+	st.insert(3);
+
+	//元素查找
+	set<int>::iterator it=st.begin();
+	for(;it!=st.end();it++)
+	{
+		cout<<*it<<" ";
+	}
+	cout<<endl;
+	if(st.count(5)) 
+	{
+		cout<<"5存在"<<endl;
+	}
+	if(!st.count(6))
+	{
+		cout<<"6不存在"<<endl;
+	}
+	//迭代器查找
+	set<int>::iterator it=st.find(6);
+	if(it!=st.end()) 
+	{
+		cout<<"找到5了"<<endl;
+	}
+}
+int main()
+{
+	vector<int> v;
+	//vector
+	//test01(v);
+	//list
+	list<int> l;
+	//test02(l);
+	queue<int> q;
+	//test03(q);
+	deque<int> dq;
+	//test04(dq);
+	stack<int> s;
+	//test05(s);
+	set<int> st;
+	test05(st);
+	
+	//xunhuan(v);
+	
+
+	return 0;
+}
