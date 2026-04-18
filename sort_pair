@@ -1,0 +1,155 @@
+#include<bits/stdc++.h>
+//sort函数头文件 
+#include<algorithm>
+//vector函数动态数组头文件
+#include<vector>
+
+using namespace std;
+int main()
+{
+	vector<int> nums1={3,6,1,2,7};
+	vector<int> nums2={5,4,9,8};
+	//1.升序排序 
+	sort(nums1.begin(),nums1.end());
+	for(int i=0;i<nums1.size();i++)
+	{
+		cout<<nums1[i]<<" ";
+	}
+	cout<<endl;
+	//2.降序排序
+	sort(nums1.begin(),nums1.end(),greater<int>());
+	for(int i=0;i<nums1.size();i++)
+	{
+		cout<<nums1[i]<<" ";
+	}
+	cout<<endl;
+	//3.自定义部分区间排序
+	//需要注意左闭右开 
+	sort(nums1.begin()+1,nums1.begin()+3);//表示下标为【1，3）的元素，及第二个和第三个元素 
+	for(int i=0;i<nums1.size();i++)
+	{
+		cout<<nums1[i]<<" ";
+	}
+	cout<<endl;
+	//4.pair函数用法
+	//4.1.创建pair的两种方法
+	//①pair<int,string> p=make_pair("103"，"李四")；
+	
+	//②pair<int,string> p;
+	//p.first=103;
+	//p.second="李四"； 
+	//4.2pair经常和vector联用
+	
+	/*int main() {
+     1. 创建一个“装pair的大箱子”（vector）
+    vector<pair<int, string>> stuList;
+
+     2. 往箱子里放3个pair（3个学生：学号+名字）
+    stuList.push_back(make_pair(101, "张三"));
+    stuList.push_back(make_pair(103, "李四"));
+    stuList.push_back(make_pair(102, "王五"));
+
+     3. 遍历箱子，取出每个pair的内容
+    cout << "遍历学生列表：\n";
+    for (int i = 0; i < stuList.size(); i++) {
+        // 取第i个pair
+        pair<int, string> temp = stuList[i];
+        cout << "第" << i+1 <<个学生：学号" << temp.first << "，名字：" << temp.second << endl;
+    }
+
+    return 0;
+    } */  
+	//总结： 
+	pair 是啥：只能装两个关联数据的 “小盒子”，两个值分别叫first和second；
+    怎么创建：用make_pair(值1, 值2)（C++98 必用，不报错）；
+    怎么用：单个 pair 用.first/.second取值，多个 pair 放进 vector 后可直接 sort 排序。
+    pair 的默认排序规则： 先比 first，first 一样再比 second，全按从小到大来
+	//5.简单自定义规则排序 
+	//绝对值排序 
+	#include<bits/stdc++.h>
+    using namespace std;
+
+// C++98 兼容：自定义比较函数（按绝对值升序）
+bool cmpAbs(const int& a, const int& b) {
+    // 绝对值小的排前面 → a的绝对值 < b的绝对值时，a在前
+    return abs(a) < abs(b);
+}
+
+int main() {
+    // 初始化数组（C++98 方式）
+    vector<int> nums;
+    nums.push_back(-5);
+    nums.push_back(2);
+    nums.push_back(-9);
+    nums.push_back(1);
+    nums.push_back(5);
+
+    // 用自定义规则排序
+    sort(nums.begin(), nums.end(), cmpAbs);
+
+    // 输出结果：1 2 -5 5 -9（绝对值从小到大）
+    cout << "按绝对值升序：";
+    for (int i=0; i<nums.size(); i++) {
+        cout << nums[i] << " ";
+    }
+    return 0;
+}
+	#include<bits/stdc++.h>
+using namespace std;
+
+// 自定义比较函数（按长度升序，长度相同按字母升序）
+bool cmpStrLen(const string& a, const string& b) {
+    if (a.size() != b.size()) {
+        // 长度短的排前面
+        return a.size() < b.size();
+    }
+    // 长度相同，按字母升序（默认字符串比较规则）
+    return a < b;
+}
+
+int main() {
+    vector<string> strs;
+    strs.push_back("apple");  // 长度5
+    strs.push_back("pear");   // 长度4
+    strs.push_back("banana"); // 长度6
+    strs.push_back("cat");    // 长度3
+    strs.push_back("ant");    // 长度3
+
+    sort(strs.begin(), strs.end(), cmpStrLen);
+
+    // 输出：ant cat pear apple banana
+    cout << "\n按字符串长度排序：";
+    for (int i=0; i<strs.size(); i++) {
+        cout << strs[i] << " ";
+    }
+    return 0;
+}
+#include<bits/stdc++.h>
+using namespace std;
+
+// 自定义比较函数（按个位降序）
+bool cmpLastDigit(const int& a, const int& b) {
+    // 个位 = 数字 % 10；个位大的排前面 → a的个位 > b的个位时，a在前
+    return (a % 10) > (b % 10);
+}
+
+int main() {
+    vector<int> nums;
+    nums.push_back(19);
+    nums.push_back(28);
+    nums.push_back(37);
+    nums.push_back(46);
+    nums.push_back(55);
+
+    sort(nums.begin(), nums.end(), cmpLastDigit);
+
+    // 输出：19 28 37 46 55（个位9→8→7→6→5）
+    cout << "\n按个位降序：";
+    for (int i=0; i<nums.size(); i++) {
+        cout << nums[i] << " ";
+    }
+    return 0;
+}
+	return 0;
+} 
+ 
